@@ -1,5 +1,13 @@
 version: '3.2'
 services:
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: 'rabbitmq'
+    ports:
+      - "6500:5672"
+      - "15672:15672"
+    volumes:
+      - ./db:/var/lib/rabbitmq
   db:
     image: postgres
     restart: unless-stopped
